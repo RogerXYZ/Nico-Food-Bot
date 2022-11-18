@@ -77,7 +77,7 @@ async def on_message(message: discord.Message) -> None:
     """
     Logging
     """
-    messageL = f"{message.author}: {message.content} ({message.channel}/{message.guild}" 
+    messageL = f"{message.author}: {message.content} | {message.channel}/{message.guild}" 
     print(messageL)
     with open("genlogs.txt", "a", encoding="utf-8") as forsenf:
         unicodedata.normalize("NFC", messageL).encode("ascii", "ignore")
@@ -102,14 +102,14 @@ async def on_message(message: discord.Message) -> None:
         if itemfind == -1:
             continue
         else:
-            await message.channel.send("<:_3:1011778337464664145>")
+            await message.channel.send(":3")
             break
     for item in bad_response:
         itemfind = message.content.lower().find(item)
         if itemfind == -1:
             continue
         else:
-            await message.channel.send("<:_2:1011778425654104135>")
+            await message.channel.send(":(")
             break  
     await bot.process_commands(message)
 

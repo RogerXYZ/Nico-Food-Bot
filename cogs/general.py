@@ -5,9 +5,10 @@ This is a template to create your own discord bot in python.
 
 Version: 5.0
 """
-
+import platform
 import random
 
+import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands
@@ -28,7 +29,7 @@ class General(commands.Cog, name="general"):
     async def forsen(self, context: Context):
         with open("nicofood.txt", "r") as foods:
             nicofoodlist = foods.readlines()
-            nicofoo = nicofoodlist[random.randint(0,len(nicofoodlist))]
+            nicofoo = nicofoodlist[random.randint(0,(len(nicofoodlist)-1))]
             await context.send(nicofoo)
     
     #Nico Food Add
@@ -36,9 +37,11 @@ class General(commands.Cog, name="general"):
     name = "nico-food-add",
     description = "add nico food"
     )
-    async def forsennn(self, foodss, context: Context):
+    @commands.has_role("chef")
+    async def forsennn(self, context: Context, food_nico: str = None):
         with open("nicofood.txt", "a") as foods:
-            foods.write(f"\n{foodss}")
+            foods.write(f"\n{food_nico}")
+        await context.send("nico food added")
 
 
 
