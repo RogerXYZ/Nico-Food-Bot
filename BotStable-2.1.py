@@ -89,7 +89,9 @@ async def on_message(message: discord.Message) -> None:
     forss = message.content.lower().find("forsen")
     if forss == -1:
         None
-    else:
+    elif message.author == "R0g3rXY#5994" and random.randint(0,10) == 4:
+        await message.channel.send("forsen")
+    elif random.randint(0,1000) == 420:
         await message.channel.send("forsen")
 
     """
