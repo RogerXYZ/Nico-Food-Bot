@@ -45,7 +45,7 @@ class General(commands.Cog, name="general"):
 
     #Litteraly Me
     @commands.hybrid_command(
-    name = "Literally-Me",
+    name = "literally-me",
     description = "He is literally me..."
     )
     async def forsen(self, context: Context):
@@ -56,7 +56,7 @@ class General(commands.Cog, name="general"):
     
     #Literally Me Add
     @commands.hybrid_command(
-    name = "Literally-Me Add",
+    name = "literally-me add",
     description = "He is literally me..."
     )
     @commands.has_role("literally me")

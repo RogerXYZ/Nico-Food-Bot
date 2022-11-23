@@ -37,7 +37,7 @@ class Moderation(commands.Cog, name="moderation"):
         """
         The bot will say anything you want.
         """
-        await context.send("<:forsenE:1044752862825156669>: " + message)
+        await context.send("<:forsenE:1044752862825156669> : " + message)
 
     @commands.hybrid_command(
         name="embed",
@@ -49,7 +49,7 @@ class Moderation(commands.Cog, name="moderation"):
         The bot will say anything you want, but using embeds.
         """
         embed = discord.Embed(
-            description="<:forsenE:1044752862825156669>: " + message,
+            description="<:forsenE:1044752862825156669> : " + message,
             color=0x161568
         )
         await context.send(embed=embed)
