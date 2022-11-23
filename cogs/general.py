@@ -43,6 +43,27 @@ class General(commands.Cog, name="general"):
             foods.write(f"\n{food_nico}")
         await context.send("nico food added")
 
+    #Litteraly Me
+    @commands.hybrid_command(
+    name = "Literally-Me",
+    description = "He is literally me..."
+    )
+    async def forsen(self, context: Context):
+        with open("gosling.txt", "r") as gosc:
+            ryangosl = gosc.readlines()
+            gosli = ryangosl[random.randint(0,(len(ryangosl)-1))]
+            await context.send(gosli)
+    
+    #Literally Me Add
+    @commands.hybrid_command(
+    name = "Literally-Me Add",
+    description = "He is literally me..."
+    )
+    @commands.has_role("literally me")
+    async def forsennn(self, context: Context, ryan_gosling: str = None):
+        with open("gosling.txt", "a") as gosc:
+            gosc.write(f"\n{ryan_gosling}")
+        await context.send("Literally Me Added <:gosling:1044809002644676768>")
 
 
     @commands.hybrid_command(
@@ -65,7 +86,7 @@ class General(commands.Cog, name="general"):
         embed = discord.Embed(
             title="**Server Name:**",
             description=f"{context.guild}",
-            color=0x9C84EF
+            color=0xA61818
         )
         if context.guild.icon is not None:            
             embed.set_thumbnail(
@@ -105,8 +126,8 @@ class General(commands.Cog, name="general"):
         """
         embed = discord.Embed(
             title="🏓 Pong!",
-            description=f"The bot latency is {round(self.bot.latency * 1000)}ms.",
-            color=0x9C84EF
+            description=f"The bot latency is {round(self.bot.latency * 1000)}ms. <:amongE:1044765339583520838>",
+            color=0xA61818
         )
         await context.send(embed=embed)
 

@@ -11,7 +11,6 @@ import sys
 from contextlib import closing
 
 import discord
-from discord import Interaction
 from discord.ext import tasks, commands
 from discord.ext.commands import Bot
 from discord.ext.commands import Context
@@ -64,10 +63,9 @@ async def on_ready() -> None:
 @tasks.loop(minutes=1.0)
 async def status_task() -> None:
     """
-    Setup the game status task of the bot
+    forsen status
     """
-    statuses = ["forsen", "forsen", "forsen"]
-    await bot.change_presence(activity=discord.Game(random.choice(statuses)))
+    await bot.change_presence(status = "forsen")
 
 @bot.event
 async def on_message(message: discord.Message) -> None:
@@ -92,6 +90,15 @@ async def on_message(message: discord.Message) -> None:
     else:
         if random.randint(0,1000) == 420:
             await message.channel.send("forsen")
+
+    """
+    Sigma
+    """
+    sigma = message.content.lower().find("sigma")
+    if sigma == -1:
+        None
+    else:
+        await message.channel.send("<:Sigma:1044764877929062420>")
 
     """
     W or L
@@ -144,7 +151,7 @@ async def on_command_error(context: Context, error) -> None:
         embed = discord.Embed(
             title="Hey, please slow down!",
             description=f"You can use this command again in {f'{round(hours)} hours' if round(hours) > 0 else ''} {f'{round(minutes)} minutes' if round(minutes) > 0 else ''} {f'{round(seconds)} seconds' if round(seconds) > 0 else ''}.",
-            color=0xE02B2B
+            color=0xA61818
         )
         await context.send(embed=embed)
     elif isinstance(error, exceptions.UserBlacklisted):
@@ -155,7 +162,7 @@ async def on_command_error(context: Context, error) -> None:
         embed = discord.Embed(
             title="Error!",
             description="You are blacklisted from using the bot.",
-            color=0xE02B2B
+            color=0xA61818
         )
         await context.send(embed=embed)
     elif isinstance(error, exceptions.UserNotOwner):
@@ -165,30 +172,28 @@ async def on_command_error(context: Context, error) -> None:
         embed = discord.Embed(
             title="Error!",
             description="You are not the owner of the bot!",
-            color=0xE02B2B
+            color=0xA61818
         )
         await context.send(embed=embed)
     elif isinstance(error, commands.MissingPermissions):
         embed = discord.Embed(
             title="Error!",
-            description="You are missing the permission(s) `" + ", ".join(
-                error.missing_permissions) + "` to execute this command!",
-            color=0xE02B2B
+            description="You are missing the permission(s) `" + ", ".join(error.missing_permissions) + "` to execute this command!",
+            color=0xA61818
         )
         await context.send(embed=embed)
     elif isinstance(error, commands.MissingRequiredArgument):
         embed = discord.Embed(
             title="Error!",
-            # We need to capitalize because the command arguments have no capital letter in the code.
             description=str(error).capitalize(),
-            color=0xE02B2B
+            color=0xA61818
         )
         await context.send(embed=embed)
     raise error
 
 async def load_cogs() -> None:
     """
-    The code in this function is executed whenever the bot will start.
+    Loads the modules
     """
     for file in os.listdir(f"./cogs"):
         if file.endswith(".py"):
