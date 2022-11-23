@@ -43,9 +43,22 @@ class General(commands.Cog, name="general"):
             foods.write(f"\n{food_nico}")
         await context.send("nico food added")
 
-    #Litteraly Me
-    @commands.hybrid_command(
-    name = "literally-me",
+
+    #Literally Me
+    @commands.hybrid_group(
+        name = "literally-me",
+        description = "He is litteraly me..."
+    )
+    async def goscat(self, context: Context) -> None:
+        """
+        He is litteraly me though
+        """
+        pass
+
+    #Literally Me Random
+    @goscat.command(
+    base = "literally-me",
+    name = "random",
     description = "He is literally me..."
     )
     async def forsen(self, context: Context):
@@ -55,8 +68,9 @@ class General(commands.Cog, name="general"):
             await context.send(gosli)
     
     #Literally Me Add
-    @commands.hybrid_command(
-    name = "literally-me add",
+    @goscat.command(
+    base = "literally-me",
+    name = "add",
     description = "He is literally me..."
     )
     @commands.has_role("literally me")
