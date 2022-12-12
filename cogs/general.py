@@ -37,7 +37,6 @@ class General(commands.Cog, name="general"):
     name = "nico-food-add",
     description = "add nico food"
     )
-    @commands.has_role("chef")
     async def forsennn(self, context: Context, food_nico: str = None):
         with open("nicofood.txt", "a") as foods:
             foods.write(f"\n{food_nico}")
@@ -73,7 +72,6 @@ class General(commands.Cog, name="general"):
     name = "add",
     description = "He is literally me..."
     )
-    @commands.has_role("literally me")
     async def forsennn(self, context: Context, ryan_gosling: str = None):
         with open("gosling.txt", "a") as gosc:
             gosc.write(f"\n{ryan_gosling}")
